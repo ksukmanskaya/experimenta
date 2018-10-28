@@ -1,0 +1,20 @@
+- batch_1:
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 1, "time_delay": 100, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 451, "emails_opened": 10}, {"subject_id": "subj_2", "emails_sent": 423, "emails_opened": 25}, {"subject_id": "subj_3", "emails_sent": 442, "emails_opened": 15}]}'
+
+- batch_2:
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 2, "time_delay": 300, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 0, "emails_opened": 20}, {"subject_id": "subj_2", "emails_sent": 800, "emails_opened": 40}, {"subject_id": "subj_3", "emails_sent": 200, "emails_opened": 12}]}'
+
+- batch_3:
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 3, "time_delay": 500, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 800, "emails_opened": 80}, {"subject_id": "subj_2", "emails_sent": 150, "emails_opened": 10}, {"subject_id": "subj_3", "emails_sent": 100, "emails_opened": 40}]}'
+
+- batch_4:
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 4, "time_delay": 1000, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 10000, "emails_opened": 8000}, {"subject_id": "subj_2", "emails_sent": 50, "emails_opened": 2}, {"subject_id": "subj_3", "emails_sent": 50, "emails_opened": 10}]}'
+
+- batch_5: (remove 1 subj and add a new one instead)
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 5, "time_delay": 1000, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 10000, "emails_opened": 7000}, {"subject_id": "subj_2", "emails_sent": 150, "emails_opened": 5}, {"subject_id": "subj_NEW", "emails_sent": 0, "emails_opened": 0}]}' 
+
+- batch_6: (remove 1 subj and add a new one instead)
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 6, "time_delay": 1000, "subjects_stats": [{"subject_id": "subj_1", "emails_sent": 500, "emails_opened": 35}, {"subject_id": "subj_NEW", "emails_sent": 200, "emails_opened": 50}, {"subject_id": "subj_NEW_2", "emails_sent": 100, "emails_opened": 10}]}'
+
+- batch_7: (remove 1 subj and add a new one instead)
+curl -i -X POST -H "Accept: application/json" http://35.228.94.42/bayesian_bandit -d '{"experiment_id": "ksenia_exp_11", "campaign_id": "camp_1", "batch_id": 7, "time_delay": 1000, "subjects_stats": [{"subject_id": "subj_NEW_3", "emails_sent": 500, "emails_opened": 35}, {"subject_id": "subj_NEW", "emails_sent": 200, "emails_opened": 50}, {"subject_id": "subj_NEW_2", "emails_sent": 100, "emails_opened": 10}]}'
