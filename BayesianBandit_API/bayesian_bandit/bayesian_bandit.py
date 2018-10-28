@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 from cerberus import Validator
-import random
+import random 
 
 def merge_two_dicts(x, y):
     """Given two dicts, merge them into a new dict as a shallow copy."""
