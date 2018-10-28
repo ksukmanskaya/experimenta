@@ -18,7 +18,7 @@ def merge_two_dicts(x, y):
 
 
 EPSILON = 0.2
-CI_WIDTH_H0 = 0.02  # width of the allowable range for real value of performance estimates
+CI_WIDTH_H0 = 0.02  # width of the allowed range for real value of performance estimates
 CONF_LEVEL = 0.95  # confidence level
 
 # Validate input json
@@ -185,7 +185,7 @@ def api_bayesian_bandit():
                          zip(beta_params['subject_id'], beta_params['alpha'])}
                 beta = {_subj_id: _beta for _subj_id, _beta in zip(beta_params['subject_id'], beta_params['beta'])}
 
-		# Calculate narrowed X2 CI for current estimates:
+		        # Calculate narrowed X2 CI for current estimates:
                 _sign_lev_tmp = (1 - CONF_LEVEL) / 2
                 CI_narrowedX2 = pd.DataFrame([{'subject_id': _subj_id,
                                     'open_rate': alpha[_subj_id]/(alpha[_subj_id]+beta[_subj_id]),
@@ -207,21 +207,20 @@ def api_bayesian_bandit():
                 # theta = {_subj_id: np.random.beta(alpha[_subj_id]*2, beta[_subj_id]*2) for _subj_id in subject_id_list}   # <--- simple bayes
                 subj_best, theta_best = sorted(theta.items(), key=lambda t: t[1], reverse=True)[0]
 
-		# Proportional proportions for nonwin subj
+		        # Proportional proportions for nonwin subj
                 theta_nonwin = {k:v for k,v in theta.iteritems() if k!=subj_best}
                 nonwin_sum_tmp = sum(theta_nonwin.values())
                 proportions = {k:v/nonwin_sum_tmp*EPSILON for k,v in theta_nonwin.iteritems()}
                 proportions.update({subj_best:(1-EPSILON)})
-		# update with NULLs for worst subjects:
+		        # update with NULLs for worst subjects:
                 proportions.update({_subj_id:0 for _subj_id in [s for s in subject_id_list if s not in subj_best_ids_list]})
 
-            # Round proportions:
+            # Round proportions (not necessary): 
             proportions = {k:round(v,2) for k,v in proportions.iteritems()}
             prop_diff_1 = round(1 - sum(proportions.values()),2)
             subj_upd_candidates = [k for k,v in proportions.iteritems() if v > -prop_diff_1]
-            proportions[random.choice(subj_upd_candidates)] += prop_diff_1   # <--- change proportions.keys() to subj_best_ids_list
+            proportions[random.choice(subj_upd_candidates)] += prop_diff_1  
             proportions = {k: round(v, 2) for k, v in proportions.iteritems()}
-            #proportions[random.choice(proportions.keys())] += prop_diff_1
 
             # Write updated beta params into black_box collection:
             beta_params = beta_params[["experiment_id", "campaign_id", "batch_id", "subject_id", "alpha", "beta"]]
